@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amari Ismail Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='75' font-size='80' font-weight='bold' text-anchor='middle' fill='%23C3E41D' font-family='Arial'>Z</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes blur-in {
+            from {
+                filter: blur(10px);
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blur-animate {
+            display: inline-block;
+            animation: blur-in 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body.light {
+            background-color: #faf8f3;
+            color: #0a0a0a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #nameCanvas {
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        #nameCanvas:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-6">
+        <nav class="flex items-center justify-between max-w-screen-2xl mx-auto">
+            <!-- Menu Button -->
+            <div class="relative">
+                <button id="menuBtn" class="p-2 transition-colors duration-300 z-50 text-neutral-500 hover:text-black dark:hover:text-white">
+                    <svg id="menuIcon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="closeIcon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <div id="menu" class="absolute top-full left-0 w-[200px] md:w-[240px] shadow-2xl mt-2 ml-4 p-4 rounded-lg z-[100] hidden"
+                     style="background-color: #000; border: 1px solid #333;">
+                    <a href="#home" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 rounded" style="color: #C3E41D;">HOME</a>
+                    <a href="#about" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 text-white hover:text-[#C3E41D] rounded">ABOUT</a>
+                    <a href="#projects" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 text-white hover:text-[#C3E41D] rounded">PROJECTS</a>
+                    <a href="#experience" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 text-white hover:text-[#C3E41D] rounded">EXPERIENCE</a>
+                    <a href="#education" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 text-white hover:text-[#C3E41D] rounded">EDUCATION</a>
+                    <a href="#contact" class="block text-lg md:text-xl font-bold tracking-tight py-2 px-2 cursor-pointer transition-colors duration-300 text-white hover:text-[#C3E41D] rounded">CONTACT</a>
+                </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="text-4xl" style="color: #fff; font-family: 'Brush Script MT', cursive;">Z</div>
+
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="relative w-16 h-8 rounded-full hover:opacity-80 transition-opacity" 
+                    style="background-color: #1a1a1a;">
+                <div class="absolute top-1 left-1 w-6 h-6 rounded-full transition-transform duration-300" 
+                     style="background-color: #fff; transform: translateX(2rem);"></div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- HOME Section -->
+    <section id="home" class="relative min-h-screen flex flex-col">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4">
+            <div class="relative text-center">
+                <div class="flex justify-center mb-4">
+                    <canvas id="nameCanvas" width="800" height="250" style="display: block; max-width: 100%;"></canvas>
+                </div>
+
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div class="w-[65px] h-[110px] sm:w-[90px] sm:h-[152px] md:w-[110px] md:h-[185px] lg:w-[129px] lg:h-[218px] rounded-full overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-110 cursor-pointer">
+                        <img src="./image/Ghostface Killer.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-32 xl:bottom-36 left-1/2 -translate-x-1/2 w-full px-6">
+            <div class="flex justify-center">
+                <p id="tagline" class="text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-center transition-colors duration-300 text-neutral-500 hover:text-black dark:hover:text-white cursor-pointer"
+                   style="font-family: 'Antic', sans-serif; letter-spacing: 0.05em;" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Designing human experiences in code.</p>
+            </div>
+        </div>
+
+        <button class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 transition-colors duration-300" aria-label="Scroll down">
+            <svg class="w-5 h-5 md:w-8 md:h-8 text-neutral-500 hover:text-black dark:hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ABOUT Section -->
+    <section id="about" class="min-h-screen pt-32 px-6 pb-20 bg-neutral-950">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-12" style="color: #C3E41D;">About Me</h1>
+            
+            <div class="space-y-8 text-lg text-neutral-300">
+                <p>
+                    Hello! I'm Amari Ismail, a passionate developer and designer focused on creating beautiful and functional digital experiences.
+                </p>
+                
+                <p>
+                    With expertise in modern web technologies, I specialize in turning ideas into reality through clean code and intuitive design. My goal is to bridge the gap between design and development.
+                </p>
+                
+                <p>
+                    I believe that great design isn't just about aesthetics—it's about creating experiences that matter to people. Every project is an opportunity to learn, grow, and make an impact.
+                </p>
+
+                <div class="pt-8 border-t border-neutral-700">
+                    <h2 class="text-3xl font-bold mb-6" style="color: #C3E41D;">Skills</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-bold mb-3" style="color: #C3E41D;">Frontend</h3>
+                            <p class="text-neutral-400">React, Next.js, Tailwind CSS, JavaScript, HTML/CSS</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-3" style="color: #C3E41D;">Tools</h3>
+                            <p class="text-neutral-400">Git, Figma, VS Code, Responsive Design</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS Section -->
+    <section id="projects" class="min-h-screen pt-32 px-6 pb-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-12" style="color: #C3E41D;">Projects</h1>
+            
+            <div class="space-y-12">
+                <div class="p-8 rounded-lg border border-neutral-700 hover:border-[#C3E41D] transition-colors">
+                    <h2 class="text-2xl font-bold mb-3" style="color: #C3E41D;">Portfolio Website</h2>
+                    <p class="text-neutral-300 mb-4">A modern, responsive portfolio website built with HTML, CSS, and JavaScript.</p>
+                    <p class="text-sm text-neutral-500">Technologies: HTML, CSS, JavaScript, Tailwind CSS</p>
+                </div>
+
+                <div class="p-8 rounded-lg border border-neutral-700 hover:border-[#C3E41D] transition-colors">
+                    <h2 class="text-2xl font-bold mb-3" style="color: #C3E41D;">E-Commerce Platform</h2>
+                    <p class="text-neutral-300 mb-4">A full-stack e-commerce application with product listing and shopping cart functionality.</p>
+                    <p class="text-sm text-neutral-500">Technologies: React, Node.js, MongoDB, Tailwind CSS</p>
+                </div>
+
+                <div class="p-8 rounded-lg border border-neutral-700 hover:border-[#C3E41D] transition-colors">
+                    <h2 class="text-2xl font-bold mb-3" style="color: #C3E41D;">Task Management App</h2>
+                    <p class="text-neutral-300 mb-4">A web application for organizing tasks and projects with real-time synchronization.</p>
+                    <p class="text-sm text-neutral-500">Technologies: React, Firebase, Tailwind CSS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE Section -->
+    <section id="experience" class="min-h-screen pt-32 px-6 pb-20 bg-neutral-950">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-12" style="color: #C3E41D;">Experience</h1>
+            
+            <div class="space-y-8">
+                <div class="border-l-4 border-[#C3E41D] pl-8 py-4">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">Senior Developer</h2>
+                    <p class="text-neutral-400 text-sm">Tech Company - 2022 to Present</p>
+                    <p class="text-neutral-300 mt-3">Led development of multiple web applications and mentored junior developers.</p>
+                </div>
+
+                <div class="border-l-4 border-[#C3E41D] pl-8 py-4">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">Full Stack Developer</h2>
+                    <p class="text-neutral-400 text-sm">Digital Agency - 2020 to 2022</p>
+                    <p class="text-neutral-300 mt-3">Developed responsive web applications for various clients using modern technologies.</p>
+                </div>
+
+                <div class="border-l-4 border-[#C3E41D] pl-8 py-4">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">Junior Developer</h2>
+                    <p class="text-neutral-400 text-sm">Startup - 2019 to 2020</p>
+                    <p class="text-neutral-300 mt-3">Built frontend interfaces and collaborated with design team on UI/UX improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION Section -->
+    <section id="education" class="min-h-screen pt-32 px-6 pb-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-12" style="color: #C3E41D;">Education</h1>
+            
+            <div class="space-y-8">
+                <div class="p-8 rounded-lg border border-neutral-700">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">Bachelor of Science in Computer Science</h2>
+                    <p class="text-neutral-400 text-sm mt-2">2019 to 2023</p>
+                    <p class="text-neutral-300 mt-3">Graduated with honors. Focused on web development and software engineering.</p>
+                </div>
+
+                <div class="p-8 rounded-lg border border-neutral-700">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">Web Development Bootcamp</h2>
+                    <p class="text-neutral-400 text-sm mt-2">Online Academy - 2018</p>
+                    <p class="text-neutral-300 mt-3">Intensive 12-week program covering frontend and backend technologies.</p>
+                </div>
+
+                <div class="p-8 rounded-lg border border-neutral-700">
+                    <h2 class="text-2xl font-bold" style="color: #C3E41D;">React Advanced Course</h2>
+                    <p class="text-neutral-400 text-sm mt-2">Online Platform - 2020</p>
+                    <p class="text-neutral-300 mt-3">Advanced React patterns, hooks, and state management techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT Section -->
+    <section id="contact" class="min-h-screen pt-32 px-6 pb-20 bg-neutral-950">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-12 text-center" style="color: #C3E41D;">Get In Touch</h1>
+            
+            <div class="text-center mb-12">
+                <p class="text-lg text-neutral-300 mb-8">Looking to elevate your online presence? I specialize in crafting stunning portfolios and custom web solutions. Let's collaborate and bring your vision to life.</p>
+                
+                <div class="inline-block p-8 rounded-lg transition-all duration-300 hover:shadow-2xl cursor-pointer" onclick="window.location.href='mailto:zakaamari9191@gmail.com';"
+                   style="background-color: #1a1a1a; border: 2px solid #C3E41D;">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4" style="color: #C3E41D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 class="text-xl font-bold mb-2" style="color: #C3E41D;">Email</h3>
+                        <p class="text-neutral-300 break-all">zakaamari9191@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-neutral-700 text-center">
+                <p class="text-neutral-500">I'd love to hear from you. Feel free to reach out anytime!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-700 py-8 px-6 text-center text-neutral-500">
+        <p>&copy; 2024 Amari Ismail. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Vaporize Animation for Name
+        class VaporizeNameAnimation {
+            constructor() {
+                this.canvas = document.getElementById('nameCanvas');
+                if (!this.canvas) return;
+                
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.animationState = 'static';
+                this.vaporizeProgress = 0;
+                this.fadeOpacity = 0;
+                this.lastTime = performance.now();
+                
+                this.setupCanvas();
+                this.createParticles('AMARI ISMAIL');
+                this.startAnimation();
+                this.canvas.addEventListener('click', () => this.triggerVaporize());
+            }
+            
+            setupCanvas() {
+                const dpr = window.devicePixelRatio || 1;
+                this.canvas.width = 800 * dpr;
+                this.canvas.height = 250 * dpr;
+                this.ctx.scale(dpr, dpr);
+            }
+            
+            createParticles(text) {
+                this.ctx.clearRect(0, 0, 800, 250);
+                this.ctx.fillStyle = '#C3E41D';
+                this.ctx.font = 'bold 80px Fira Code, monospace';
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillText(text, 400, 125);
+                
+                const imageData = this.ctx.getImageData(0, 0, 800, 250);
+                const data = imageData.data;
+                this.particles = [];
+                
+                for (let y = 0; y < 250; y += 4) {
+                    for (let x = 0; x < 800; x += 4) {
+                        const index = (y * 800 + x) * 4;
+                        if (data[index + 3] > 0) {
+                            this.particles.push({
+                                x: x,
+                                y: y,
+                                originalX: x,
+                                originalY: y,
+                                opacity: 1,
+                                velocityX: 0,
+                                velocityY: 0,
+                                angle: Math.random() * Math.PI * 2,
+                                speed: 0
+                            });
+                        }
+                    }
+                }
+                
+                this.ctx.clearRect(0, 0, 800, 250);
+            }
+            
+            triggerVaporize() {
+                if (this.animationState === 'static' || this.animationState === 'waiting') {
+                    this.animationState = 'vaporizing';
+                    this.vaporizeProgress = 0;
+                }
+            }
+            
+            startAnimation() {
+                setTimeout(() => {
+                    this.animationState = 'vaporizing';
+                }, 2000);
+                
+                const animate = (currentTime) => {
+                    const deltaTime = (currentTime - this.lastTime) / 1000;
+                    this.lastTime = currentTime;
+                    
+                    this.ctx.clearRect(0, 0, 800, 250);
+                    
+                    if (this.animationState === 'vaporizing') {
+                        this.vaporizeProgress += deltaTime * 50;
+                        const progress = Math.min(100, this.vaporizeProgress);
+                        
+                        let allVaporized = true;
+                        this.particles.forEach(p => {
+                            if (p.originalX <= 800 * progress / 100) {
+                                if (p.speed === 0) {
+                                    p.speed = Math.random() * 5 + 2;
+                                    p.velocityX = Math.cos(p.angle) * p.speed;
+                                    p.velocityY = Math.sin(p.angle) * p.speed;
+                                }
+                                
+                                p.velocityY += 0.1;
+                                p.x += p.velocityX;
+                                p.y += p.velocityY;
+                                p.opacity *= 0.97;
+                                
+                                if (p.opacity > 0.01) allVaporized = false;
+                                
+                                if (p.opacity > 0.01) {
+                                    this.ctx.fillStyle = `rgba(195, 228, 29, ${p.opacity})`;
+                                    this.ctx.fillRect(p.x, p.y, 2, 2);
+                                }
+                            } else {
+                                allVaporized = false;
+                                this.ctx.fillStyle = '#C3E41D';
+                                this.ctx.fillRect(p.x, p.y, 2, 2);
+                            }
+                        });
+                        
+                        if (progress >= 100 && allVaporized) {
+                            this.particles.forEach(p => {
+                                p.speed = 0;
+                                p.opacity = 1;
+                                p.velocityX = 0;
+                                p.velocityY = 0;
+                            });
+                            this.animationState = 'fadingIn';
+                            this.fadeOpacity = 0;
+                        }
+                    } else if (this.animationState === 'fadingIn') {
+                        this.fadeOpacity += deltaTime * 2;
+                        const opacity = Math.min(1, this.fadeOpacity);
+                        
+                        this.particles.forEach(p => {
+                            p.x = p.originalX;
+                            p.y = p.originalY;
+                            this.ctx.fillStyle = `rgba(195, 228, 29, ${opacity})`;
+                            this.ctx.fillRect(p.x, p.y, 2, 2);
+                        });
+                        
+                        if (opacity >= 1) {
+                            this.animationState = 'waiting';
+                            setTimeout(() => {
+                                this.animationState = 'vaporizing';
+                                this.vaporizeProgress = 0;
+                            }, 2000);
+                        }
+                    } else {
+                        this.particles.forEach(p => {
+                            this.ctx.fillStyle = '#C3E41D';
+                            this.ctx.fillRect(p.x, p.y, 2, 2);
+                        });
+                    }
+                    
+                    requestAnimationFrame(animate);
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+        
+        // Initialize vaporize animation
+        new VaporizeNameAnimation();
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const toggleDot = themeToggle.querySelector('div');
+        let isDark = true;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+            
+            if (isDark) {
+                toggleDot.style.transform = 'translateX(2rem)';
+            } else {
+                toggleDot.style.transform = 'translateX(0)';
+            }
+        });
+
+        // Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        const menu = document.getElementById('menu');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                menu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                isMenuOpen = false;
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isMenuOpen = false;
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                
+                // الانتقال للقسم
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Animate text
+        function animateText(elementId, text, delay = 100) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            const letters = text.split('');
+            element.innerHTML = '';
+
+            letters.forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.className = 'blur-animate';
+                span.style.animationDelay = `${index * delay}ms`;
+                element.appendChild(span);
+            });
+        }
+
+        window.addEventListener('load', () => {
+            animateText('firstName', 'AMARI', 100);
+            animateText('lastName', 'ISMAIL', 100);
+        });
+
+        // Animate tagline
+        function animateTagline() {
+            const tagline = document.getElementById('tagline');
+            const text = tagline.textContent;
+            const words = text.split(' ');
+            tagline.innerHTML = '';
+            tagline.style.display = 'flex';
+            tagline.style.flexWrap = 'wrap';
+            tagline.style.justifyContent = 'center';
+
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word;
+                span.className = 'blur-animate';
+                span.style.animationDelay = `${index * 150}ms`;
+                span.style.marginRight = '0.25em';
+                tagline.appendChild(span);
+            });
+        }
+
+        window.addEventListener('load', animateTagline);
+    </script>
+</body>
+</html>
